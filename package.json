@@ -2,6 +2,9 @@
   "name": "indecision-app",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "serve": "babel src/app.js --out-file=public/scripts/app.js -presets=env,react --watch"
+  },
   "repository": "https://github.com/thomaschsu/indecision-app.git",
   "author": "Tom Hsu <thomaschsu@gmail.com>",
   "license": "MIT",
