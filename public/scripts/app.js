@@ -2,12 +2,10 @@
 
 console.log('App.js is running');
 
-// create app object title / sbutitle
-// use title/subtitle in template
-// render template
 var app = {
     title: 'Indecision App',
-    subtitle: 'Randomly choose a decision!'
+    subtitle: 'Randomly choose a decision!',
+    options: ['One', 'Two']
 
     // JSX - JavaScript XML
 };var template = React.createElement(
@@ -18,10 +16,16 @@ var app = {
         null,
         app.title
     ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        'App Subtitle: ',
+        app.subtitle
+    ),
     React.createElement(
         'p',
         null,
-        app.subtitle
+        app.options.length > 0 ? 'Here are your options:' : 'No options'
     ),
     React.createElement(
         'ol',
@@ -43,26 +47,29 @@ var user = {
     age: 30,
     location: 'Holmdel'
 };
+function getLocation(location) {
+    return location !== undefined ? React.createElement(
+        'p',
+        null,
+        'Location: ',
+        location
+    ) : undefined;
+}
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.name
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.location
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
