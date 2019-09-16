@@ -43,42 +43,5 @@ var app = {
     )
 );
 
-var count = 0;
-var addOne = function addOne() {
-    count += 1;
-};
-var minusOne = function minusOne() {
-    count -= 1;
-};
-var setupReset = function setupReset() {
-    count = 0;
-};
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: minusOne },
-        '-1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: setupReset },
-        'Reset'
-    )
-);
-console.log(templateTwo);
 var appRoot = document.getElementById('app');
-
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
