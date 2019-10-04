@@ -1,5 +1,3 @@
-// count - setup default prop value to 0
-
 class Counter extends React.Component {
     constructor(props) {
         super(props)
@@ -8,6 +6,23 @@ class Counter extends React.Component {
         this.handleReset = this.handleReset.bind(this)
         this.state = {
             count: 0
+        }
+    }
+    componentDidMount() {
+        try {
+            const stringCount = localStorage.getItem('count')
+            const count = parseInt(stringCount, 10)
+            if (!isNaN(count)) {
+                this.setState(() => ({ count }))
+            }
+        } catch (e) {
+
+        }
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.count !== this.state.count) {
+            const json = JSON.stringify(this.state.count)
+            localStorage.setItem('count', json)
         }
     }
     handleAddOne() {
